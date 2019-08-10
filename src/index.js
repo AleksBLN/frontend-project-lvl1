@@ -1,22 +1,21 @@
 import readlineSync from 'readline-sync';
+import { car, cdr } from '@hexlet/pairs';
 
-export default () => {
-  const whatToDo = '\nAnswer "yes" if number even otherwise answer "no".';
-  console.log(`Welcome to the Brain Games! ${whatToDo}`);
+const gear = (rule, data) => {
+  console.log(`Welcome to the Brain Games! \n${rule}`);
   const greeting = () => {
     const userName = readlineSync.question('May i have your name? ');
     console.log(`Hello, ${userName}!`);
     return userName;
   };
   const userName = greeting();
-  const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-  const isEven = num => num % 2 === 0;
   const iter = (counter, acc) => {
-    const number = getRandomInt(-100, 100);
-    console.log(`Question: ${number}`);
-    const askQuestion = () => readlineSync.question('Is this number even? ');
-    const inputAnswer = askQuestion();
-    const rightAnswer = isEven(number) ? 'yes' : 'no';
+    const gameData = data();
+    const gameQuestion = car(gameData);
+    console.log(`Question: ${gameQuestion}`);
+    const getAnswer = () => readlineSync.question('Your answer ');
+    const inputAnswer = getAnswer();
+    const rightAnswer = cdr(gameData);
     const correct = (rightAnswer === inputAnswer);
     if (correct && counter < 3) {
       if (counter === 2) {
@@ -29,3 +28,4 @@ export default () => {
   };
   return iter(0, 3);
 };
+export default gear;

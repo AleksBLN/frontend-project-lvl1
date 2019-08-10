@@ -4,7 +4,7 @@
   "description": "command line game",
   "main": "index.js",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js",
+    "brain-calc": "dist/bin/brain-calc.js",
     "brain-even": "dist/bin/brain-even.js"
   },
   "files": [
@@ -40,6 +40,7 @@
     "eslint-plugin-import": "^2.18.2"
   },
   "dependencies": {
+    "@hexlet/pairs": "^1.0.10",
     "readline-sync": "^1.4.10"
   }
 }
