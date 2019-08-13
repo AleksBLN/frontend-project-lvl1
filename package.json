@@ -23,7 +23,9 @@
     "url": "git+https://github.com/AleksBLN/frontend-project-lvl1.git"
   },
   "keywords": [
-    "brain-games"
+    "brain-games",
+    "cli-games",
+    "hexlet-project"
   ],
   "author": "AleksBLN",
   "license": "ISC",
