@@ -1,35 +1,30 @@
 import { cons, car, cdr } from '@hexlet/pairs';
-import gear from '..';
+import engine from '..';
+import { getRandomInt } from '../common';
 
-const rule = 'What is the result of the expression?';
+const gameTask = 'What is the result of the expression?';
+const operationList = '+-*';
 const getData = () => {
-  const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-  const firstNum = getRandomInt(1, 50);
-  const secondNum = getRandomInt(1, 10);
-  const randomOperation = (num) => {
-    switch (num) {
-      case 0: {
-        const questionPlus = `${firstNum} + ${secondNum}`;
-        const answerPlus = firstNum + secondNum;
-        return cons(questionPlus, answerPlus);
+  const firstNumber = getRandomInt(1, 50);
+  const secondNumber = getRandomInt(1, 10);
+  const operation = operationList[getRandomInt(0, operationList.length - 1)];
+  const getResult = (sign) => {
+    switch (sign) {
+      case '-': {
+        return firstNumber - secondNumber;
       }
-      case 1: {
-        const questionMinus = `${firstNum} - ${secondNum}`;
-        const answerMinus = firstNum - secondNum;
-        return cons(questionMinus, answerMinus);
+      case '+': {
+        return firstNumber + secondNumber;
       }
-      case 2: {
-        const questionMultiply = `${firstNum} * ${secondNum}`;
-        const answerMultiply = firstNum * secondNum;
-        return cons(questionMultiply, answerMultiply);
+      case '*': {
+        return firstNumber * secondNumber;
       }
       default:
-    }
+    };
   };
-  const operation = randomOperation(getRandomInt(0, 3));
-  const gameQuestion = car(operation);
-  const rightAnswer = `${cdr(operation)}`;
+  const gameQuestion = `${firstNumber} ${operation} ${secondNumber}`;
+  const rightAnswer = `${getResult(operation)}`;
   return cons(gameQuestion, rightAnswer);
 };
 
-export default () => gear(rule, getData);
+export default () => engine(gameTask, getData);

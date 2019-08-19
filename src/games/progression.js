@@ -1,7 +1,8 @@
 import { cons } from '@hexlet/pairs';
-import gear from '..';
+import engine from '..';
+import { getRandomInt } from '../common';
 
-const rule = 'What number is missing in the progression?';
+const gameTask = 'What number is missing in the progression?';
 const getProgression = (start, step, length, emptyStep) => {
   const iter = (counter, progMember, progStep, progression) => {
     if (counter === length) {
@@ -15,7 +16,6 @@ const getProgression = (start, step, length, emptyStep) => {
 };
 const getProgressionMember = (firstMember, progressionStep, numberOfMember) => firstMember + progressionStep * (numberOfMember - 1);
 const getData = () => {
-  const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
   const start = getRandomInt(-100, 100);
   const step = getRandomInt(1, 60);
   const emptyStep = getRandomInt(1, 10);
@@ -24,4 +24,4 @@ const getData = () => {
   const rightAnswer = `${getProgressionMember(start, step, emptyStep)}`;
   return cons(gameQuestion, rightAnswer);
 };
-export default () => gear(rule, getData);
+export default () => engine(gameTask, getData);

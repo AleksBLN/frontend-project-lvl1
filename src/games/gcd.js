@@ -1,7 +1,8 @@
 import { cons } from '@hexlet/pairs';
-import gear from '..';
+import engine from '..';
+import { getRandomInt } from '../common';
 
-const rule = 'Find the greatest common divisor of given numbers.';
+const gameTask = 'Find the greatest common divisor of given numbers.';
 const gcd = (a, b) => {
   if (b) {
     return gcd(b, a % b);
@@ -9,11 +10,10 @@ const gcd = (a, b) => {
   return Math.abs(a);
 };
 const getData = () => {
-  const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-  const firstNum = getRandomInt(-100, 100);
-  const secondNum = getRandomInt(-100, 100);
-  const gameQuestion = `${firstNum} ${secondNum}`;
-  const rightAnswer = `${gcd(firstNum, secondNum)}`;
+  const firstOperand = getRandomInt(-100, 100);
+  const secondOperand = getRandomInt(-100, 100);
+  const gameQuestion = `${firstOperand} ${secondOperand}`;
+  const rightAnswer = `${gcd(firstOperand, secondOperand)}`;
   return cons(gameQuestion, rightAnswer);
 };
-export default () => gear(rule, getData);
+export default () => engine(gameTask, getData);

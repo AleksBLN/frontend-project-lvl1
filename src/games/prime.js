@@ -1,7 +1,8 @@
 import { cons } from '@hexlet/pairs';
-import gear from '..';
+import engine from '..';
+import { getRandomInt } from '../common';
 
-const rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const gameTask = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const isPrime = (num) => {
   const iter = (counter, number) => {
     if (counter === Math.abs(number)) {
@@ -12,9 +13,8 @@ const isPrime = (num) => {
   return iter(2, num);
 };
 const getData = () => {
-  const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
   const gameQuestion = getRandomInt(-100, 100);
   const rightAnswer = isPrime(gameQuestion) ? 'yes' : 'no';
   return cons(gameQuestion, rightAnswer);
 };
-export default () => gear(rule, getData);
+export default () => engine(gameTask, getData);
