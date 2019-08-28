@@ -3,25 +3,31 @@ import engine from '..';
 import { getRandomInt } from '../common';
 
 const gameTask = 'What number is missing in the progression?';
-const getProgression = (start, step, length, emptyStep) => {
-  const iter = (counter, progMember, progStep, progression) => {
-    if (counter === length) {
+const length = 10;
+const getQuestion = (start, step, hiddenElement) => {
+  const iter = (counter, progressionMember, progression) => {
+    if (counter - 1 === length) {
       return progression;
-    } else if (counter + 1 === emptyStep) {
-      return iter(counter + 1, progMember + progStep, progStep, `${progression} ..`);
     }
-    return iter(counter + 1, progMember + progStep, progStep, `${progression} ${progMember}`);
+    if (counter === 1) {
+      if (hiddenElement === 1) {
+        return iter(counter + 1, progressionMember + step, '..');
+      }
+      return iter(counter + 1, progressionMember + step, `${progressionMember}`);
+    } if (counter === hiddenElement) {
+      return iter(counter + 1, progressionMember + step, `${progression} ..`);
+    }
+    return iter(counter + 1, progressionMember + step, `${progression} ${progressionMember}`);
   };
-  return iter(1, start + step, step, start);
+  return iter(1, start, '');
 };
-const getProgressionMember = (firstMember, progressionStep, numberOfMember) => firstMember + progressionStep * (numberOfMember - 1);
+
 const getData = () => {
   const start = getRandomInt(-100, 100);
   const step = getRandomInt(1, 60);
-  const emptyStep = getRandomInt(1, 10);
-  const length = 10;
-  const gameQuestion = getProgression(start, step, length, emptyStep);
-  const rightAnswer = `${getProgressionMember(start, step, emptyStep)}`;
+  const hiddenElement = getRandomInt(1, length);
+  const gameQuestion = getQuestion(start, step, hiddenElement);
+  const rightAnswer = (start + step * (hiddenElement - 1)).toString();
   return cons(gameQuestion, rightAnswer);
 };
 export default () => engine(gameTask, getData);

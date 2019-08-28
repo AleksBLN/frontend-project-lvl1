@@ -1,4 +1,4 @@
-import { cons, car, cdr } from '@hexlet/pairs';
+import { cons } from '@hexlet/pairs';
 import engine from '..';
 import { getRandomInt } from '../common';
 
@@ -20,10 +20,10 @@ const getData = () => {
         return firstNumber * secondNumber;
       }
       default:
-    };
+    }
   };
   const gameQuestion = `${firstNumber} ${operation} ${secondNumber}`;
-  const rightAnswer = `${getResult(operation)}`;
+  const rightAnswer = getResult(operation).toString();
   return cons(gameQuestion, rightAnswer);
 };
 

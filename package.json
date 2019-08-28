@@ -2,7 +2,6 @@
   "name": "frontend-project-lvl1",
   "version": "1.0.0",
   "description": "command line game",
-  "main": "index.js",
   "bin": {
     "brain-calc": "dist/bin/brain-calc.js",
     "brain-even": "dist/bin/brain-even.js",
