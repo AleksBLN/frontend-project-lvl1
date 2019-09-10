@@ -1,6 +1,6 @@
 import { cons } from '@hexlet/pairs';
 import engine from '..';
-import { getRandomInt } from '../common';
+import getRandomInt from '../common';
 
 const gameTask = 'What is the result of the expression?';
 const operations = '+-*';

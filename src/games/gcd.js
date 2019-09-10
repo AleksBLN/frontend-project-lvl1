@@ -1,6 +1,6 @@
 import { cons } from '@hexlet/pairs';
 import engine from '..';
-import { getRandomInt } from '../common';
+import getRandomInt from '../common';
 
 const gameTask = 'Find the greatest common divisor of given numbers.';
 const getGcd = (a, b) => (b ? getGcd(b, a % b) : Math.abs(a));

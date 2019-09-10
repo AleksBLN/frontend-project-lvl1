@@ -1,6 +1,6 @@
 import { cons } from '@hexlet/pairs';
 import engine from '..';
-import { getRandomInt } from '../common';
+import getRandomInt from '../common';
 
 const gameTask = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const isPrime = (num) => {
