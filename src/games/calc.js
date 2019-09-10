@@ -3,26 +3,27 @@ import engine from '..';
 import { getRandomInt } from '../common';
 
 const gameTask = 'What is the result of the expression?';
-const operationList = '+-*';
+const operations = '+-*';
 const getData = () => {
-  const firstNumber = getRandomInt(1, 50);
-  const secondNumber = getRandomInt(1, 10);
-  const operation = operationList[getRandomInt(0, operationList.length - 1)];
+  const first = getRandomInt(1, 50);
+  const second = getRandomInt(1, 10);
+  const operation = operations[getRandomInt(0, operations.length - 1)];
   const getResult = (sign) => {
     switch (sign) {
       case '-': {
-        return firstNumber - secondNumber;
+        return first - second;
       }
       case '+': {
-        return firstNumber + secondNumber;
+        return first + second;
       }
       case '*': {
-        return firstNumber * secondNumber;
+        return first * second;
       }
       default:
     }
+    return undefined;
   };
-  const gameQuestion = `${firstNumber} ${operation} ${secondNumber}`;
+  const gameQuestion = `${first} ${operation} ${second}`;
   const rightAnswer = getResult(operation).toString();
   return cons(gameQuestion, rightAnswer);
 };

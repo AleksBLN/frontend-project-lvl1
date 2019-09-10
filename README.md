@@ -1,4 +1,4 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/efb749fa87cd0f435c80/maintainability)](https://codeclimate.com/github/AleksBLN/frontend-project-lvl1/maintainability)
 [![Build Status](https://travis-ci.org/AleksBLN/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/AleksBLN/frontend-project-lvl1)  
 
 Набор мини-игр для командной строки.

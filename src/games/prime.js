@@ -5,10 +5,10 @@ import { getRandomInt } from '../common';
 const gameTask = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const isPrime = (num) => {
   const iter = (counter, number) => {
-    if (number === 0 || number === 1) {
+    if (number <= 1) {
       return false;
     }
-    if (counter === Math.abs(number)) {
+    if (counter === number) {
       return true;
     }
     return ((num % counter === 0) ? false : iter(counter + 1, number));
