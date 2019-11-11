@@ -5,17 +5,18 @@ import getRandomInt from '../common';
 const gameTask = 'What number is missing in the progression?';
 const length = 10;
 const getQuestion = (start, step, hiddenElementPosition, progressionLength) => {
-  const iter = (counter, progressionMember, progression) => {
-    const addMember = (counter === hiddenElementPosition) ? '..' : `${progressionMember}`;
-    if (counter - 1 === progressionLength) {
+  const iter = (counter, progression) => {
+    if (counter === progressionLength) {
       return progression;
     }
-    if (counter === 1) {
-      return iter(counter + 1, progressionMember + step, addMember);
+    const progressionMember = start + step * counter;
+    const newMember = (counter === hiddenElementPosition - 1) ? '..' : `${progressionMember}`;
+    if (counter === 0) {
+      return iter(counter + 1, newMember);
     }
-    return iter(counter + 1, progressionMember + step, `${progression} ${addMember}`);
+    return iter(counter + 1, `${progression} ${newMember}`);
   };
-  return iter(1, start, '');
+  return iter(0, '');
 };
 
 const getData = () => {
