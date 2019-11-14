@@ -10,7 +10,7 @@ const engine = (gameTask, getGameData) => {
   const iter = (counter) => {
     if (counter > attemptsCount) {
       console.log(`Congratulations, ${userName}`);
-      return false;
+      return;
     }
     const gameData = getGameData();
     const gameQuestion = car(gameData);
@@ -19,11 +19,11 @@ const engine = (gameTask, getGameData) => {
     const rightAnswer = cdr(gameData);
     if (rightAnswer === inputAnswer) {
       console.log('Correct!');
-      return iter(counter + 1);
+      iter(counter + 1);
+    } else {
+      console.log(`"${inputAnswer}" is wrong answer. Correct answer was "${rightAnswer}".`);
+      console.log(`Let's try again, ${userName}!`);
     }
-    console.log(`"${inputAnswer}" is wrong answer. Correct answer was "${rightAnswer}".`);
-    console.log(`Let's try again, ${userName}!`);
-    return false;
   };
   return iter(1);
 };
