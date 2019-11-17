@@ -25,6 +25,6 @@ const engine = (gameTask, getGameData) => {
       console.log(`Let's try again, ${userName}!`);
     }
   };
-  return iter(1);
+  iter(1);
 };
 export default engine;
